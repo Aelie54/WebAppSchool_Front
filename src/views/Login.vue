@@ -1,5 +1,5 @@
 <script setup>
-import Login from "../components/form.vue";
+import { Form } from "../components/form.vue";
 
 async function FormSubmit(user) {
   let datas = {
@@ -24,10 +24,10 @@ async function FormSubmit(user) {
 }
 </script>
 
-
 <template>
-  <div><br>
+  <div>
+    <br />
     <h1>Connexion</h1>
-    <Login @form-submit="FormSubmit" />
+    <Form @form-submit="FormSubmit" />
   </div>
 </template>
