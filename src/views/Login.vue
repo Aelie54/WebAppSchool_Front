@@ -7,13 +7,14 @@
 </template>
 
 <script setup>
-import Form from "../components/form.vue";
+import Form from "../components/Form.vue";
 
 async function FormSubmit(user) {
   let datas = {
     username: user.username,
     password: user.password,
   };
+
   console.log(datas);
   let response = await fetch("http://127.0.0.1:8000/api/login_check", {
     method: "POST",
