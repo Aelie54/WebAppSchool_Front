@@ -1,5 +1,13 @@
+<template>
+  <div>
+    <br />
+    <h1>Connexion</h1>
+    <Form @form-submit="FormSubmit" />
+  </div>
+</template>
+
 <script setup>
-import { Form } from "../components/form.vue";
+import Form from "../components/form.vue";
 
 async function FormSubmit(user) {
   let datas = {
@@ -23,11 +31,3 @@ async function FormSubmit(user) {
   }
 }
 </script>
-
-<template>
-  <div>
-    <br />
-    <h1>Connexion</h1>
-    <Form @form-submit="FormSubmit" />
-  </div>
-</template>
