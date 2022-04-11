@@ -7,10 +7,12 @@
     <button @click="get_student_info">Get student info</button>
 
     <ul>
-      <li v-for="stuff of recombined_list" :key="stuff">Ppeis</li>
-      <li v-for="(value, index) in recombined_list" :key="index">
-        <p>{{ index }}: {{ value }}</p>
-      </li>
+      <!-- <li v-for="index in recombined_list" :key="index">
+        <p>
+          Stupid output
+        </p>
+      </li> -->
+      <li v-for="stuff in Object.keys(recombined_list)" :key="stuff">Ppeis</li>
     </ul>
   </div>
 </template>
@@ -57,5 +59,10 @@ async function get_student_info() {
   console.log(recombined_list);
 
   console.log(Object.keys(recombined_list).length);
+
+  for (let index = 0; index < Object.keys(recombined_list).length; index++) {
+    console.log("test");
+  }
+  console.log("end of get_student_info");
 }
 </script>
