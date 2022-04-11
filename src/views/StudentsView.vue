@@ -26,7 +26,7 @@ const recombined_list = ref([]);
 
 async function FetchStudents() {
   console.log("Fetch Students");
-  let response = await fetch("http://127.0.0.1:36159/api/students", {
+  let response = await fetch("http://127.0.0.1:8000/api/students", {
     method: "GET",
   })
     .then((r) => r.json())
@@ -47,7 +47,7 @@ async function get_student_info() {
   });
   console.log(id_students_no_info.value);
 
-  let response = await fetch("http://127.0.0.1:36159/api/people", {
+  let response = await fetch("http://127.0.0.1:8000/api/people", {
     method: "GET",
   })
     .then((r) => r.json())
@@ -61,7 +61,6 @@ async function get_student_info() {
   });
   console.log(recombined_list);
   console.log(recombined_list.value);
-
 
   console.log("end of get_student_info");
 }
