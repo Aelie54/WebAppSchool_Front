@@ -2,7 +2,8 @@
   <div>
     <h1>Page liste students</h1>
     Ici, le directeur et peut-être les profs pourront voir les éléves.
-    <button @click="FetchStudents">Fetch Students</button>
+    <br>
+    <button @click="FetchStudents">Fetch Students</button><br />
     <button @click="get_student_info">Get student info</button>
 
     <ul>
