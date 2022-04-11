@@ -2,13 +2,14 @@
   <div>
     <h1>Page liste students</h1>
     Ici, le directeur et peut-être les profs pourront voir les éléves.
-    <br>
+    <br />
     <button @click="FetchStudents">Fetch Students</button><br />
     <button @click="get_student_info">Get student info</button>
 
     <ul>
-      <li v-for="item of ze_students_list" :key="item">
-        {{ item["@id"] }}
+      <li v-for="stuff of recombined_list" :key="stuff">Ppeis</li>
+      <li v-for="(value, index) in recombined_list" :key="index">
+        <p>{{ index }}: {{ value }}</p>
       </li>
     </ul>
   </div>
@@ -17,9 +18,9 @@
 <script setup>
 import { ref } from "vue";
 
-// let ze_students_list = [];
 const ze_students_list = ref([]);
 const id_students_no_info = ref([]);
+const recombined_list = ref({});
 
 async function FetchStudents() {
   console.log("Fetch Students");
@@ -28,7 +29,6 @@ async function FetchStudents() {
   })
     .then((r) => r.json())
     .catch();
-  console.log(response);
   console.log(response["hydra:member"]);
   ze_students_list.value = response["hydra:member"];
   console.log(ze_students_list);
@@ -49,6 +49,13 @@ async function get_student_info() {
   })
     .then((r) => r.json())
     .catch();
-  console.log(response);
+  console.log(response["hydra:member"]);
+  let people_list = response["hydra:member"];
+  people_list.forEach((element) => {
+    recombined_list[element["@id"].replace("/api/students/", "")] = element;
+  });
+  console.log(recombined_list);
+
+  console.log(Object.keys(recombined_list).length);
 }
 </script>
