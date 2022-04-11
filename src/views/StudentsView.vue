@@ -6,13 +6,13 @@
     <button @click="FetchStudents">Fetch Students</button><br />
     <button @click="get_student_info">Get student info</button>
 
-    <ul>
-      <!-- <li v-for="index in recombined_list" :key="index">
-        <p>
-          Stupid output
-        </p>
+    <ul id="student_list">
+      <li v-for="element in recombined_list" :key="element">
+        <p>Stupid output: {{ element }}</p>
+      </li>
+      <!-- <li v-for="element in ze_students_list" :key="element">
+        <p>Stupid output: {{ element }}</p>
       </li> -->
-      <li v-for="stuff in Object.keys(recombined_list)" :key="stuff">Ppeis</li>
     </ul>
   </div>
 </template>
@@ -22,7 +22,7 @@ import { ref } from "vue";
 
 const ze_students_list = ref([]);
 const id_students_no_info = ref([]);
-const recombined_list = ref({});
+const recombined_list = ref([]);
 
 async function FetchStudents() {
   console.log("Fetch Students");
@@ -34,6 +34,7 @@ async function FetchStudents() {
   console.log(response["hydra:member"]);
   ze_students_list.value = response["hydra:member"];
   console.log(ze_students_list);
+  // console.log(ze_students_list.value[7]);
 }
 
 async function get_student_info() {
@@ -54,15 +55,14 @@ async function get_student_info() {
   console.log(response["hydra:member"]);
   let people_list = response["hydra:member"];
   people_list.forEach((element) => {
-    recombined_list[element["@id"].replace("/api/students/", "")] = element;
+    let elemento = element["@id"].replace("/api/students/", "")
+    recombined_list.value.push(element);
+    // recombined_list[element["@id"].replace("/api/students/", "")] = element;
   });
   console.log(recombined_list);
+  console.log(recombined_list.value);
 
-  console.log(Object.keys(recombined_list).length);
 
-  for (let index = 0; index < Object.keys(recombined_list).length; index++) {
-    console.log("test");
-  }
   console.log("end of get_student_info");
 }
 </script>
