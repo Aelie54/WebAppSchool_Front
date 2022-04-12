@@ -7,7 +7,8 @@
 
     <div class="main_section">
       <div id="flex_container">
-        Classe :
+        <p>Classe : {{ current_section }}</p>
+        <p>List Length : {{ list_length }}</p>
 
         <div
           v-for="element in recombined_list"
@@ -31,6 +32,8 @@ import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 
 const recombined_list = ref([]);
+const list_length = ref(0);
+const current_section = ref("All");
 
 onMounted(() => {
   console.log("On Mounted");
@@ -39,14 +42,8 @@ onMounted(() => {
 
 async function DisplayStudents() {
   console.log("Display Students");
-  // console.log(storeStore.all_students);
   recombined_list.value = storeStore.all_students;
-  recombined_list.value = recombined_list.value[0];
-  // console.log(recombined_list);
-  // console.log(recombined_list.value[0]);
-  // console.log(recombined_list.value[0][0]);
-
-  // console.log("End of Display Students");
+  list_length.value = recombined_list.value.length;
 }
 </script>
 <style scoped>

@@ -16,15 +16,15 @@ const router = createRouter({
     },
 
     {
-      path: "/registerprof",
-      name: "registerprof",
-      component: () => import("../views/RegisterprofView.vue"),
+      path: "/RegisterProf",
+      name: "RegisterProf",
+      component: () => import("../views/RegisterProfView.vue"),
     },
 
     {
       path: "/registerstudent",
       name: "register",
-      component: () => import("../views/RegisterstudentView.vue"),
+      component: () => import("../views/RegisterStudentView.vue"),
     },
 
     {

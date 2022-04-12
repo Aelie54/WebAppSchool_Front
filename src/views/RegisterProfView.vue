@@ -1,14 +1,15 @@
 <template>
-  <FormRegister @form-submit="add" />
+  <FormRegister @form-submit="add_professor" />
 </template>
 
 <script setup>
-import FormRegister from "../components/Formregisterprof.vue";
+import FormRegister from "../components/FormRegisterProf.vue";
 
-async function add() {
+async function add_professor(prof) {
+  console.log("Function add_professor");
   let datas = {
     email: prof.email,
-    Username: prof.username,
+    username: prof.username,
     Name: prof.name,
     FirstName: prof.firstname,
     Roles: ["ROLE_PROF"],
@@ -18,8 +19,17 @@ async function add() {
     password: prof.password,
   };
 
-  console.log("add lancée!");
-  console.log(prof.value);
+  // age: prof.age,
+  // arrivaldate: prof.arrival,
+  // salary: prof.salary,
+  // email: prof.email,
+  // roles: ["ROLE_PROF"],
+  // password : prof.password,
+  // username: prof.username,
+  // name: prof.name,
+  // firstName: prof.firstname,
+
+  console.log(prof);
 
   let response = await fetch("http://127.0.0.1:8000/api/professors", {
     method: "POST",
@@ -30,8 +40,5 @@ async function add() {
   })
     .then((r) => r.json())
     .catch();
-  if (response) {
-    console.log("ajout du prof avec succès");
-  }
 }
 </script>
