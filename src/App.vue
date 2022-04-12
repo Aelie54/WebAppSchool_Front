@@ -19,7 +19,8 @@
         <RouterLink to="/sections">Sections</RouterLink>
         <RouterLink to="/students">Students</RouterLink>
         <RouterLink to="/teachers">Teachers</RouterLink>
-        <RouterLink to="/register">Register new person</RouterLink>
+        <RouterLink to="/registerprof">Register a professor</RouterLink>
+        <RouterLink to="/registerstudent">Register a student</RouterLink>
       </nav>
       <div>
         <div>
