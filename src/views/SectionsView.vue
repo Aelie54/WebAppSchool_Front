@@ -11,10 +11,10 @@
     </p>
     <div class="flex_container">
       <p v-for="item in section_list" :key="item" class="flex_stuff">
-        {{ item }}
-        <!-- {{ item.id }}
+        <!-- {{ item }} -->
+        {{ item.id }}
         {{ item.Name }}
-        {{ item.Instit }} -->
+        {{ item.Instit }}
       </p>
     </div>
   </div>
@@ -41,7 +41,7 @@ function display_sections() {
 
 async function fetch_sections() {
   console.log("fetch_sections");
-  let response = await fetch("http://127.0.0.1:45489/api/sections", {
+  let response = await fetch("http://127.0.0.1:8000/api/sections", {
     method: "GET",
   })
     .then((r) => r.json())

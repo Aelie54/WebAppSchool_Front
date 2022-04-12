@@ -10,13 +10,15 @@
 import Form from "../components/Form.vue";
 
 async function FormSubmit(user) {
+
+
   let datas = {
     Username: user.username,
     password: user.password,
   };
 
   console.log(datas);
-  let response = await fetch("http://127.0.0.1:45489/api/login_check", {
+  let response = await fetch("http://127.0.0.1:8000/api/login_check", {
     method: "POST",
     body: JSON.stringify(datas),
     headers: {
