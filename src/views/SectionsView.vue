@@ -4,65 +4,50 @@
     Ici, on pourra voir la liste des classes. Je crois que le directeur et les
     profs pourront voir cette page.
     <p>
-      <button @click="display_sections">Display Sections</button>
+      <button @click="display_sections()">Display Sections</button>
     </p>
     <p>
-      <button @click="fetch_sections">Fetch Sections</button>
+      <button @click="fetch_sections">DEBUG Fetch Sections</button>
     </p>
     <p>
-      <button @click="test">Test Sections</button>
+      <button @click="test">DEBUG Test Sections</button>
+    </p>
+    <p>
+      <button @click="clear_store_section">DEBUG Clear sections</button>
     </p>
     <div class="flex_container">
       <div v-for="item in section_list" :key="item" class="flex_stuff">
         <!-- {{ item }} -->
-        <p>
-          <span>
-            {{ item.name }}
-          </span>
-          <span>
-            {{ item.Instit }}
-          </span>
-          <span>
-            {{ item.id }}
-          </span>
-        </p>
+        <p>Section name : {{ item.Name }}</p>
+        <p>Section Professor : {{ item.Instit }}</p>
+        <p>Section id : {{ item.id }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 
 const section_list = ref([]);
 
+onMounted(() => {
+  display_sections();
+});
+
 function display_sections() {
   console.log("display_sections");
-  if (storeStore.sections.length == 0) {
+  if (storeStore.all_sections.length == 0) {
     console.log("No store, fetching");
-    fetch_sections();
+    // fetch_sections();
     return;
   } else {
     console.log("Store found, displaying");
-    console.log(storeStore.sections);
+    console.log(storeStore.all_sections);
+    section_list.value = storeStore.all_sections;
   }
-}
-
-async function fetch_sections() {
-  console.log("fetch_sections");
-  let response = await fetch("http://127.0.0.1:8000/api/sections", {
-    method: "GET",
-  })
-    .then((r) => r.json())
-    .catch();
-  console.log(response);
-  console.log(response["hydra:member"]);
-  console.log(section_list);
-  storeStore.sections = response["hydra:member"];
-  section_list.value = storeStore.sections;
-  console.log(section_list);
 }
 
 function test() {
@@ -93,7 +78,9 @@ function test() {
 
 .flex_stuff {
   background-color: aquamarine;
-  width: 20vw;
+  text-align: center;
+  width: 50vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 1vh;
 }
 </style>

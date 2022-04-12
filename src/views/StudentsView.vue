@@ -3,75 +3,74 @@
     <h1>Page liste students</h1>
     Ici, le directeur et peut-être les profs pourront voir les éléves.
     <br />
-    <button @click="FetchStudents">Fetch Students</button><br />
-    <button @click="get_student_info">Get student info</button><br />
-    <button @click="store_stuff">Store Stuff</button>
+    <button @click="DisplayStudents">Display Students</button><br />
 
-    <ul id="student_list">
-      <li v-for="element in recombined_list" :key="element">
-        <p>Stupid output: {{ element }}</p>
-      </li>
-      <!-- <li v-for="element in ze_students_list" :key="element">
-        <p>Stupid output: {{ element }}</p>
-      </li> -->
-    </ul>
+    <div class="main_section">
+      <div id="flex_container">
+        Classe :
+
+        <div
+          v-for="element in recombined_list"
+          :key="element"
+          class="flex_stuff"
+        >
+          <p>Id: {{ element.id }}</p>
+          <p>email: {{ element.email }}</p>
+          <p>Username: {{ element.Username }}</p>
+          <p>Name: {{ element.Name }}</p>
+          <p>FirstName: {{ element.FirstName }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 
-const ze_students_list = ref([]);
-const id_students_no_info = ref([]);
 const recombined_list = ref([]);
 
-async function FetchStudents() {
-  console.log("Fetch Students");
-  let response = await fetch("http://127.0.0.1:8000/api/students", {
-    method: "GET",
-  })
-    .then((r) => r.json())
-    .catch();
-  console.log(response["hydra:member"]);
-  ze_students_list.value = response["hydra:member"];
-  console.log(ze_students_list);
-  // console.log(ze_students_list.value[7]);
-}
+onMounted(() => {
+  console.log("On Mounted");
+  DisplayStudents();
+});
 
-async function get_student_info() {
-  console.log("get_student_info");
-  console.log(ze_students_list.value);
+async function DisplayStudents() {
+  console.log("Display Students");
+  // console.log(storeStore.all_students);
+  recombined_list.value = storeStore.all_students;
+  recombined_list.value = recombined_list.value[0];
+  // console.log(recombined_list);
+  // console.log(recombined_list.value[0]);
+  // console.log(recombined_list.value[0][0]);
 
-  ze_students_list.value.forEach((element) => {
-    let retrieved_id = element["@id"].replace("/api/students/", "");
-    id_students_no_info.value.push(retrieved_id);
-  });
-  console.log(id_students_no_info.value);
-
-  let response = await fetch("http://127.0.0.1:8000/api/people", {
-    method: "GET",
-  })
-    .then((r) => r.json())
-    .catch();
-  console.log(response["hydra:member"]);
-  let people_list = response["hydra:member"];
-  people_list.forEach((element) => {
-    let elemento = element["@id"].replace("/api/students/", "");
-    recombined_list.value.push(element);
-    // recombined_list[element["@id"].replace("/api/students/", "")] = element;
-  });
-  console.log(recombined_list);
-  console.log(recombined_list.value);
-  console.log("end of get_student_info");
-}
-
-function store_stuff() {
-  console.log("store_stuff");
-  storeStore.all_students = [];
-
-  console.log(storeStore.all_students);
-  storeStore.all_students.push(recombined_list.value);
+  // console.log("End of Display Students");
 }
 </script>
+<style scoped>
+.main_section {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+  height: 30vh;
+}
+
+.flex_stuff {
+  background-color: aquamarine;
+  width: 50vw;
+  padding: 2vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 1vh;
+}
+</style>
