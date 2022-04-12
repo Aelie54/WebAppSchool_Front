@@ -4,15 +4,23 @@
         identifiants.
         <br />
 
-        <form @submit.prevent="$emit('form-submit', user)">
-            <input type="text" name="email" id="email" placeholder="email" v-model="prof.email" /><br />
-            <input type="text" name="username" id="size" placeholder="pseudo" v-model="prof.username" /><br />
+        <form @submit.prevent="$emit('form-submit', prof)">
+            <input type="text" name="email" id="email" 
+            placeholder="email" v-model="prof.email" /><br />
+            <input type="text" name="username" id="size" 
+            placeholder="pseudo" v-model="prof.username" /><br />
             <input type="text" name="name" id="name" placeholder="nom" v-model="prof.name" /><br />
-            <input type="text" name="firstname" id="firstname" placeholder="prénom" v-model="prof.firstname" /><br />
+            <input type="text" name="firstname" id="firstname" 
+            placeholder="prénom" v-model="prof.firstname" /><br />
             <input type="number" name="age" id="age" placeholder="age" v-model="prof.age" /><br />
-            <input type="date" name="arrival" id="arrival" placeholder="date d'arrivée" v-model="prof.arrival" /><br />
-            <!-- <input type="number" name="section" id="section" placeholder="section" v-model="prof.section" /><br /> -->
-            <input type="number" name="salary" id="salary" placeholder="salaire" v-model="prof.salary" /><br />
+            <input type="date" name="arrival" id="arrival" 
+            placeholder="date d'arrivée" v-model="prof.arrival" /><br />
+            <!-- <input type="number" name="section" id="section" 
+            placeholder="section" v-model="prof.section" /><br /> -->
+            <input type="number" name="salary" id="salary" 
+            placeholder="salaire" v-model="prof.salary" /><br />
+             <input type="text" name="password" id="password" 
+            placeholder="password" v-model="prof.password" /><br />
             <input type="submit" value="Ajouter professeur" id="submit" /><br /><br />
         </form>
 
@@ -39,12 +47,13 @@
 import { ref } from "@vue/reactivity";
 const prof = ref({
     email: "",
-    Username: "",
-    Name: "",
-    FirstName: "",
+    username: "",
+    name: "",
+    firstname: "",
     Roles: ["ROLE_PROF"],
-    Age: "",
-    ArrivalDate: "",
-    Salary: "",
+    age: "",
+    arrival: "",
+    salary: "",
+    password:""
 });
 </script>

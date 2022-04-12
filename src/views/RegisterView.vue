@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import { ref } from "@vue/reactivity";
 import FormRegister from "../components/Formregisterprof.vue";
 
 
@@ -18,6 +17,7 @@ async function add(prof) {
         Age: prof.age,
         ArrivalDate: prof.arrival,
         Salary: prof.salary,
+        password : prof.password
     };
 
     console.log("add lancée!")
