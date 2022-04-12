@@ -8,14 +8,14 @@ import FormRegister from "../components/FormRegisterProf.vue";
 async function add_professor(prof) {
   console.log("Function add_professor");
   let datas = {
-    Username: prof.username,
+    username: prof.username,
     email: prof.email,
-    Name: prof.name,
-    FirstName: prof.firstname,
+    name: prof.name,
+    firstname: prof.firstname,
     Roles: ["ROLE_PROF"],
-    Age: prof.age,
-    ArrivalDate: prof.arrival,
-    Salary: prof.salary,
+    age: prof.age,
+    arrivaldate: prof.arrival,
+    salary: prof.salary,
     password: prof.password,
   };
 
