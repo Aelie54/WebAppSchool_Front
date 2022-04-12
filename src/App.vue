@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-// import HelloWorld from "@/components/HelloWorld.vue";
-</script>
-
 <template>
   <header>
     <img
@@ -26,11 +21,40 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/teachers">Teachers</RouterLink>
         <RouterLink to="/register">Register new person</RouterLink>
       </nav>
+      <div>
+        <div>
+          <button @click="mykey.fill_students_store">
+            Store Fill Students
+          </button>
+          <button @click="mykey.fill_people_store">Store Fill People</button>
+          <button @click="mykey.fill_sections_store">Store Fill Sections</button>
+
+          <button @click="mykey.fill_professor_store">Store Fill Professor</button>
+
+        </div>
+        <div>
+          <button @click="mykey.empty_students_store">
+            Store Empty Students
+          </button>
+          <button @click="mykey.empty_people_store">Store Empty People</button>
+          <button @click="mykey.empty_sections_store">
+            Store Empty Sections
+          </button>
+          <button @click="mykey.empty_professor_store">
+            Store Empty Professor
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+import * as mykey from "./views/PeopleFetch";
+</script>
 
 <style>
 @import "@/assets/base.css";
