@@ -49,8 +49,6 @@ async function Fetchprof() {
   // console.log(ze_students_list.value[7]);
 }
 
-
-
 async function get_prof_info() {
   console.log("get_prof_info");
   console.log(ze_students_list.value);
@@ -69,7 +67,7 @@ async function get_prof_info() {
   console.log(response["hydra:member"]);
   let people_list = response["hydra:member"];
   people_list.forEach((element) => {
-    let elemento = element["@id"].replace("/api/professors/", "")
+    let elemento = element["@id"].replace("/api/professors/", "");
     recombined_list.value.push(element);
     // recombined_list[element["@id"].replace("/api/students/", "")] = element;
   });

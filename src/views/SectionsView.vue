@@ -71,7 +71,6 @@ function test() {
 }
 </script>
 
-
 <style>
 .main_section {
   margin-top: 5vh;
