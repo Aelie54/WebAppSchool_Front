@@ -9,13 +9,24 @@
     <p>
       <button @click="fetch_sections">Fetch Sections</button>
     </p>
+    <p>
+      <button @click="test">Test Sections</button>
+    </p>
     <div class="flex_container">
-      <p v-for="item in section_list" :key="item" class="flex_stuff">
+      <div v-for="item in section_list" :key="item" class="flex_stuff">
         <!-- {{ item }} -->
-        {{ item.id }}
-        {{ item.Name }}
-        {{ item.Instit }}
-      </p>
+        <p>
+          <span>
+            {{ item.name }}
+          </span>
+          <span>
+            {{ item.Instit }}
+          </span>
+          <span>
+            {{ item.id }}
+          </span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -53,7 +64,14 @@ async function fetch_sections() {
   section_list.value = storeStore.sections;
   console.log(section_list);
 }
+
+function test() {
+  console.log("test");
+  storeStore.fetch_personal_data_store();
+}
 </script>
+
+
 <style>
 .main_section {
   margin-top: 5vh;
@@ -72,7 +90,6 @@ async function fetch_sections() {
 }
 
 .flex_stuff {
-
   background-color: aquamarine;
   width: 20vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

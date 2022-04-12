@@ -9,5 +9,10 @@ export const useStudentsStore = defineStore({
   }),
   persist: true,
   getters: {},
-  actions: {},
+  actions: {
+    fetch_personal_data_store(unique_id: any) {
+      console.log("lapin")
+      console.log(unique_id);
+    }
+  },
 });
