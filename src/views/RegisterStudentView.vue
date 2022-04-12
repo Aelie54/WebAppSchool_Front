@@ -13,7 +13,7 @@ async function add(student) {
     username: student.username,
     name: student.name,
     roles: ["ROLE_STUDENT"],
-    firstName: student.firstname,
+    firstname: student.firstname,
     parent1: student.parent1,
     parent2: student.parent2,
   };
@@ -25,7 +25,7 @@ async function add(student) {
     method: "POST",
     body: JSON.stringify(student),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/ld+json",
     },
   })
     .then((r) => r.json())
