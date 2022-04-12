@@ -41,7 +41,7 @@ function display_sections() {
   console.log("display_sections");
   if (storeStore.all_sections.length == 0) {
     console.log("No store, fetching");
-    fetch_sections();
+    // fetch_sections();
     return;
   } else {
     console.log("Store found, displaying");

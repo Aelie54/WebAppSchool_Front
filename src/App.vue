@@ -27,10 +27,13 @@
             Store Fill Students
           </button>
           <button @click="mykey.fill_people_store">Store Fill People</button>
-          <button @click="mykey.fill_sections_store">Store Fill Sections</button>
+          <button @click="mykey.fill_sections_store">
+            Store Fill Sections
+          </button>
 
-          <button @click="mykey.fill_professor_store">Store Fill Professor</button>
-
+          <button @click="mykey.fill_professor_store">
+            Store Fill Professor
+          </button>
         </div>
         <div>
           <button @click="mykey.empty_students_store">
