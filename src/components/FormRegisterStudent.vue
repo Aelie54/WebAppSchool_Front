@@ -95,5 +95,6 @@ const student = ref({
   password: "",
   parent1: "",
   parent2: "",
+  gender: true,
 });
 </script>
