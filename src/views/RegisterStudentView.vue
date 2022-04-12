@@ -8,14 +8,14 @@ import FormRegister from "../components/FormRegisterStudent.vue";
 async function add(student) {
   let datas = {
     email: student.email,
-    Gender: true,
+    gender: true,
     password: student.password,
     username: student.username,
-    Name: student.name,
+    name: student.name,
     roles: ["ROLE_STUDENT"],
-    FirstName: student.firstname,
-    parent_email_1: student.parent1,
-    parent_email_2: student.parent2,
+    firstName: student.firstname,
+    parent1: student.parent1,
+    parent2: student.parent2,
   };
 
   console.log("add lancée!");

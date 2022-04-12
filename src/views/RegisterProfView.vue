@@ -12,7 +12,7 @@ async function add_professor(prof) {
     email: prof.email,
     name: prof.name,
     firstname: prof.firstname,
-    Roles: ["ROLE_PROF"],
+    roles: ["ROLE_PROF"],
     age: prof.age,
     arrivaldate: prof.arrival,
     salary: prof.salary,
