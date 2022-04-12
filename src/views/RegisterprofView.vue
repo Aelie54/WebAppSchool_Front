@@ -8,16 +8,29 @@ import FormRegister from "../components/Formregisterprof.vue";
 
 async function add(prof) {
 
+
     let datas = {
+        age: prof.age,
+        arrivaldate: prof.arrival,
+        salary: prof.salary,
         email: prof.email,
-        Username: prof.username,
-        Name: prof.name,
-        FirstName: prof.firstname,
-        Roles: ["ROLE_PROF"],
-        Age: prof.age,
-        ArrivalDate: prof.arrival,
-        Salary: prof.salary,
-        password : prof.password
+        roles: ["ROLE_PROF"],
+        password : prof.password,
+        username: prof.username,
+        name: prof.name,
+        firstName: prof.firstname,
+
+// marche sur postman et apiplateform:
+//   "Age": 55,
+//   "ArrivalDate": "2022-04-12",
+//   "Salary": 1000,
+//   "email": "eee@gmail.fr",
+//   "roles": ["prof"],
+//   "password": "123",
+//   "Username": "123a",
+//   "Name": "bah",
+//   "FirstName": "beh"
+
     };
 
     console.log("add lancée!")
@@ -27,7 +40,7 @@ async function add(prof) {
         method: "POST",
         body: JSON.stringify(prof),
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/ld+json",
         },
     })
         .then((r) => r.json())

@@ -1,41 +1,36 @@
 <template>
           <h1>Inscrire un professeur</h1>
         Ici, le directeur peut inscrire un nouveau 
-        professeur et créer sesidentifiants.
-        <br />
+        professeur et créer sesidentifiants.<br />
 
-        <form @submit.prevent="$emit('form-submit', prof)">
+        <form @submit.prevent="$emit('form-submit', student)">
             <input type="text" name="email" id="email" 
-            placeholder="email" v-model="prof.email" /><br />
+            placeholder="email" v-model="student.email" /><br />
 
             <input type="text" name="username" id="username" 
-            placeholder="username" v-model="prof.username" /><br />
+            placeholder="username" v-model="student.username" /><br />
 
             <input type="text" name="name" id="name" 
-            placeholder="nom" v-model="prof.name" /><br />
+            placeholder="nom" v-model="student.name" /><br />
 
             <input type="text" name="firstname" id="firstname" 
-            placeholder="prénom" v-model="prof.firstname" /><br />
+            placeholder="prénom" v-model="student.firstname" /><br />
 
-            <input type="number" name="age" id="age" 
-            placeholder="age" v-model="prof.age" /><br />
+            <input type="text" name="parent1" id="parent1" 
+            placeholder="email premeir parent" v-model="student.parent1" /><br />
 
-            <input type="date" name="arrival" id="arrival" 
-            placeholder="date d'arrivée" v-model="prof.arrival" /><br />
+            <input type="text" name="parent2" id="parent2" 
+            placeholder="email second parent" v-model="student.parent2" /><br />
 
             <!-- <input type="number" name="section" id="section" 
-            placeholder="section" v-model="prof.section" /><br /> -->
-
-            <input type="number" name="salary" id="salary" 
-            placeholder="salaire" v-model="prof.salary" /><br />
+            placeholder="section" v-model="student.section" /><br /> -->
 
              <input type="text" name="password" id="password" 
-            placeholder="password" v-model="prof.password" /><br />
+            placeholder="password" v-model="student.password" /><br />
 
             <input type="submit" value="Ajouter professeur" 
             id="submit" /><br /><br />
         </form>
-
         <!-- <h1>Inscrire un élève</h1>
         Ici, le directeur peut inscrire un nouvel élève et créer ses identitfiants.
         <br />
@@ -57,15 +52,14 @@
 
 <script setup>
 import { ref } from "@vue/reactivity";
-const prof = ref({
+const student = ref({
     email: "",
     username: "",
     name: "",
     firstname: "",
-    Roles: ["ROLE_PROF"],
-    age: "",
-    arrival: "",
-    salary: "",
-    password:""
+    Roles: ["ROLE_STUDENT"],
+    password:"", 
+    parent1 :"",
+    parent2:""
 });
 </script>
