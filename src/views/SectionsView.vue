@@ -66,8 +66,11 @@ async function fetch_sections() {
 }
 
 function test() {
-  console.log("test");
-  storeStore.fetch_personal_data_store();
+  console.log("func test");
+  // storeStore.fetch_personal_data_store(Math.random());
+  storeStore.fetch_personal_data_store(180);
+  let temp_output = storeStore.fetch_personal_data_store(180);
+  console.log({ temp_output });
 }
 </script>
 
