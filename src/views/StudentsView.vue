@@ -17,9 +17,9 @@
         >
           <p>Id: {{ element.id }}</p>
           <p>email: {{ element.email }}</p>
-          <p>Username: {{ element.Username }}</p>
-          <p>Name: {{ element.Name }}</p>
-          <p>FirstName: {{ element.FirstName }}</p>
+          <p>Username: {{ element.username }}</p>
+          <p>Name: {{ element.name }}</p>
+          <p>FirstName: {{ element.firstname }}</p>
         </div>
       </div>
     </div>
