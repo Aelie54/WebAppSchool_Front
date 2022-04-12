@@ -8,8 +8,8 @@ import FormRegister from "../components/FormRegisterProf.vue";
 async function add_professor(prof) {
   console.log("Function add_professor");
   let datas = {
+    Username: prof.username,
     email: prof.email,
-    username: prof.username,
     Name: prof.name,
     FirstName: prof.firstname,
     Roles: ["ROLE_PROF"],
@@ -33,12 +33,13 @@ async function add_professor(prof) {
 
   let response = await fetch("http://127.0.0.1:8000/api/professors", {
     method: "POST",
-    body: JSON.stringify(prof),
+    body: JSON.stringify(datas),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/ld+json",
     },
   })
     .then((r) => r.json())
     .catch();
+  console.log(response);
 }
 </script>
