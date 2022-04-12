@@ -10,8 +10,6 @@
 import Form from "../components/Form.vue";
 
 async function FormSubmit(user) {
-
-
   let datas = {
     Username: user.username,
     password: user.password,
