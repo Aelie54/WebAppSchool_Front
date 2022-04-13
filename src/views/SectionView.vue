@@ -7,9 +7,11 @@
       <button @click="display_sections()">Display Sections</button>
     </p>
     <div class="flex_container">
-      <p>Section name : {{ item.name }}</p>
+      <p>Section name : {{ item.Name }}</p>
       <p>Section Professor : {{ item.Instit }}</p>
       <p>Section id : {{ item.id }}</p>
+      <p>Section students : {{ item.Eleve }}</p>
+
     </div>
   </div>
 </template>
@@ -22,7 +24,7 @@ const router = useRouter();
 const route = useRoute();
 
 const section_list = ref([]);
-const item = ref([]);
+const item = ref({});
 
 onMounted(() => {
   display_sections();
@@ -38,11 +40,12 @@ function display_sections() {
       if(element.Name == route.params.id){
         console.log("Success");
         console.log(element)
-        item.value.name = element.Name;
+        item.value = element
+        console.log(item.value.name)
         console.log(item.value)
         return;
       }
   });
-  item.value = storeStore.all_sections;
+//   item.value = storeStore.all_sections;
 }
 </script>
