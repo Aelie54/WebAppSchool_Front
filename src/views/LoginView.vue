@@ -34,10 +34,8 @@ async function FormSubmit(user) {
 
   if (response.token && response.refresh_token) {
     sessionStorage.clear();
-    localstorage.clear();
+    localStorage.clear();
 
-    localStorage.setItem("token", response.token);
-    localStorage.setItem("refresh_token", response.refresh_token);
 
 
     console.log(response);
@@ -47,9 +45,14 @@ async function FormSubmit(user) {
     console.log(role);
     // localStorage.setItem("role", response.refresh_token);
 
+
     tokenStore.token = response.token;
     tokenStore.refresh_token = response.refresh_token;
-    tokenStore.roles = decode.roles;
+    tokenStore.roles = "abc";
+
+    localStorage.setItem("token", response.token);
+    localStorage.setItem("refresh_token", response.refresh_token);
+    localStorage.setItem("roles", decode.roles);
 
   }
 }
