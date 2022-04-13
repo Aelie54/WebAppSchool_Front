@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import * as mykey from "./views/PeopleFetch";
+import * as mykey from "./function/PeopleFetch";
 </script>
 
 <style>

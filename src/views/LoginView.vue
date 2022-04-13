@@ -8,6 +8,8 @@
 
 <script setup>
 import Form from "../components/Form.vue";
+import VueJWTDecode from 'vue-jwt-decode';
+import { useTokenStore } from "../stores/token";
 
 async function FormSubmit(user) {
   let datas = {
@@ -25,11 +27,30 @@ async function FormSubmit(user) {
     },
   })
     .then((r) => r.json())
-    .catch();
+
+    .catch((e) =>{
+      return e.json();
+    });
+
   if (response.token && response.refresh_token) {
+    sessionStorage.clear();
+    localstorage.clear();
+
     localStorage.setItem("token", response.token);
     localStorage.setItem("refresh_token", response.refresh_token);
+
+
     console.log(response);
+
+    var decode = jwt.decode(response.token);
+    var role = decode.roles;
+    console.log(role);
+    // localStorage.setItem("role", response.refresh_token);
+
+    tokenStore.token = response.token;
+    tokenStore.refresh_token = response.refresh_token;
+    tokenStore.roles = decode.roles;
+
   }
 }
 </script>
