@@ -40,9 +40,9 @@ async function FormSubmit(user) {
 
     console.log(response);
 
-    var decode = jwt.decode(response.token);
-    var role = decode.roles;
-    console.log(role);
+    // var decode = jwt.decode(response.token);
+    // var role = decode.roles;
+    // console.log(role);
     // localStorage.setItem("role", response.refresh_token);
 
 

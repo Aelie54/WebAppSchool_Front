@@ -6,15 +6,6 @@
     <p>
       <button @click="display_sections()">Display Sections</button>
     </p>
-    <p>
-      <button @click="fetch_sections">DEBUG Fetch Sections</button>
-    </p>
-    <p>
-      <button @click="test">DEBUG Test Sections</button>
-    </p>
-    <p>
-      <button @click="clear_store_section">DEBUG Clear sections</button>
-    </p>
     <div class="flex_container">
       <div v-for="item in section_list" :key="item" class="flex_stuff">
         <!-- {{ item }} -->
@@ -50,13 +41,6 @@ function display_sections() {
   }
 }
 
-function test() {
-  console.log("func test");
-  // storeStore.fetch_personal_data_store(Math.random());
-  storeStore.fetch_personal_data_store(180);
-  let temp_output = storeStore.fetch_personal_data_store(180);
-  console.log({ temp_output });
-}
 </script>
 
 <style>
