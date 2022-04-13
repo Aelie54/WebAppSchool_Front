@@ -8,14 +8,16 @@
 
 <script setup>
 import Form from "../components/Form.vue";
-import VueJWTDecode from 'vue-jwt-decode';
-// import { useTokenStore } from "../stores/token";
+import jwt_decode from "jwt-decode";
+import { useTokenStore } from "../stores/token";
 
 async function FormSubmit(user) {
   let datas = {
     username: user.username,
     password: user.password,
   };
+
+const tokenStore = useTokenStore();
 
   console.log(datas);
 
@@ -33,26 +35,24 @@ async function FormSubmit(user) {
     });
 
   if (response.token && response.refresh_token) {
+    console.log(response);
     sessionStorage.clear();
     localStorage.clear();
 
-    console.log(response);
+    tokenStore.token = response.token;
+    tokenStore.refresh_token = response.refresh_token;
+    // tokenStore.roles = decoded.roles;
 
-    // var decode = jwt.decode(response.token);
-    // var role = decode.roles;
-    // console.log(role);
-    // localStorage.setItem("role", response.refresh_token);
-
-
-    // tokenStore.token = response.token;
-    // tokenStore.refresh_token = response.refresh_token;
-    // tokenStore.roles = "abc";
 
     sessionStorage.setItem("token", "response.token");
     sessionStorage.setItem("refresh_token", "response.refresh_token");
+    // sessionStorage.setItem("refresh_token", "response.roles");
 
-    let decode = VueJwtDecode.decode(response.token);
-    console.log(decode);
+    console.log("j'essaie d'afficher le decode token");
+
+var decoded = jwt_decode(tokenStore.token);
+ 
+console.log(decoded);
 
     // sessionStorage.setItem("roles", decode.roles);
 
