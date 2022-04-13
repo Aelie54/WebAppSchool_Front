@@ -3,8 +3,6 @@
     <h1>Page liste teachers</h1>
     Ici, le directeur peut voir les éléves.
     <br />
-    <button @click="Fetchprof">Fetch Teachers</button><br />
-    <button @click="get_prof_info">Get teachers info</button>
 
     <div class="main_section">
       <div id="flex_container">
@@ -14,19 +12,9 @@
           <p>Email: {{ element.email }}</p>
           <p>Username: {{ element.username }}</p>
           <p>Name: {{ element.name }}</p>
-          <p>Section: {{ element.section }}</p>
+          <p @click="send(element.section)">Section: {{ element.section }}</p>
           <p>Age: {{ element.age }}</p>
           <p>Arrival Date: {{ element.arrivaldate }}</p>
-
-          <!-- 
-          Username
-          Nom
-          Prenom
-          Email
-          Section
-          Age
-          Arrival_date
-         -->
         </div>
       </div>
     </div>
@@ -36,7 +24,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStudentsStore } from "../stores/students";
+import { useRouter, useRoute } from "vue-router";
+
 const storeStore = useStudentsStore();
+const router = useRouter();
+const route = useRoute();
+
 const list_length = ref(0);
 const teacher_list = ref([]);
 
@@ -45,10 +38,34 @@ onMounted(() => {
   DisplayTeachers();
 });
 
-async function DisplayTeachers() {
+function send(stuff) {
+  console.log("send");
+  console.log(stuff)
+  router.push({ name: 'section', params: { id: stuff }})
+}
+
+function DisplayTeachers() {
   console.log("Display Teachers");
   teacher_list.value = storeStore.all_professors;
   list_length.value = storeStore.all_professors.length;
+  teacher_list.value.forEach((current_teach) => {
+    // console.log(current_teach);
+    if (isNaN(current_teach.section)) {
+      // console.log("Replacing section");
+      let section_list = storeStore.all_sections;
+      // console.log(current_teach.section);
+      let failure = false;
+      section_list.forEach((element) => {
+        // console.log(element);
+        if (element["@id"] == current_teach.section) {
+          // console.log("Found section");
+          current_teach.section = element.Name;
+          return;
+        }
+        return;
+      });
+    }
+  });
 }
 </script>
 <style scoped>
