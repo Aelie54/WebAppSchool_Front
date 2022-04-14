@@ -7,7 +7,7 @@
     <div class="main_section">
       <div id="flex_container">
         <p>List Length : {{ list_length }}</p>
-        <div v-for="element in teacher_list" :key="element" class="flex_stuff">
+        <div @click="send(element.name, element.email)" v-for="element in teacher_list" :key="element" class="flex_stuff">
           <p>Id: {{ element.id }}</p>
           <p>Email: {{ element.email }}</p>
           <p>Username: {{ element.username }}</p>
@@ -38,10 +38,12 @@ onMounted(() => {
   DisplayTeachers();
 });
 
-function send(stuff) {
+
+function send(direction, stuff) {
   console.log("send");
   console.log(stuff);
-  router.push({ name: "section", params: { id: stuff } });
+  console.log(direction)
+  // router.push({ name: "section", params: { id: stuff } });
 }
 
 function DisplayTeachers() {
