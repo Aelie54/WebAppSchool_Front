@@ -4,7 +4,12 @@
     Ici, on pourra voir la liste des classes. Je crois que le directeur et les
     profs pourront voir cette page.
     <div class="flex_container">
-      <div @click="send(item.name)" v-for="item in section_list" :key="item" class="flex_stuff">
+      <div
+        @click="send(item.name)"
+        v-for="item in section_list"
+        :key="item"
+        class="flex_stuff"
+      >
         <!-- {{ item }} -->
         <p>Section name : {{ item.name }}</p>
         <p>Section Professor : {{ item.instit }}</p>
@@ -21,7 +26,6 @@ import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
-
 
 const section_list = ref([]);
 
@@ -47,7 +51,6 @@ function send(stuff) {
   console.log(stuff);
   router.push({ name: "section", params: { id: stuff } });
 }
-
 </script>
 
 <style>

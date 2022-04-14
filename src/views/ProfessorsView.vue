@@ -1,26 +1,25 @@
 <template>
   <div>
-    <h1>Page liste students</h1>
-    Ici, le directeur et peut-être les profs pourront voir les éléves.
+    <h1>Page liste teachers</h1>
+    Ici, le directeur peut voir les éléves.
     <br />
-    <button @click="DisplayStudents">Display Students</button><br />
 
     <div class="main_section">
       <div id="flex_container">
-        <p>Classe : {{ current_section }}</p>
         <p>List Length : {{ list_length }}</p>
-
         <div
-          @click="send(element.id)"
-          v-for="element in recombined_list"
+          @click="send(element, element.id)"
+          v-for="element in teacher_list"
           :key="element"
           class="flex_stuff"
         >
           <p>Id: {{ element.id }}</p>
-          <p>email: {{ element.email }}</p>
+          <p>Email: {{ element.email }}</p>
           <p>Username: {{ element.username }}</p>
           <p>Name: {{ element.name }}</p>
-          <p>FirstName: {{ element.firstname }}</p>
+          <p @click="send(element.section)">Section: {{ element.section }}</p>
+          <p>Age: {{ element.age }}</p>
+          <p>Arrival Date: {{ element.arrivaldate }}</p>
         </div>
       </div>
     </div>
@@ -29,30 +28,45 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
+import { useRouter, useRoute } from "vue-router";
+
 const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
 
-const recombined_list = ref([]);
 const list_length = ref(0);
+const teacher_list = ref([]);
 
 onMounted(() => {
   console.log("On Mounted");
-  DisplayStudents();
+  DisplayTeachers();
 });
 
-function DisplayStudents() {
-  console.log("Display Students");
-  recombined_list.value = storeStore.all_students;
-  list_length.value = recombined_list.value.length;
-}
-
-function send(stuff) {
+function send(direction, stuff) {
   console.log("send");
   console.log(stuff);
-  router.push({ name: "student", params: { id: stuff } });
+  direction = direction["@type"];
+  // direction.replace("")
+  console.log(direction);
+  router.push({ name: direction, params: { id: stuff } });
+}
+
+function DisplayTeachers() {
+  console.log("Display Teachers");
+  teacher_list.value = storeStore.all_professors;
+  list_length.value = storeStore.all_professors.length;
+  teacher_list.value.forEach((current_teach) => {
+    if (isNaN(current_teach.section)) {
+      let section_list = storeStore.all_sections;
+      let failure = false;
+      section_list.forEach((element) => {
+        if (element["@id"] == current_teach.section) {
+          current_teach.section = element.name;
+        }
+      });
+    }
+  });
 }
 </script>
 <style scoped>

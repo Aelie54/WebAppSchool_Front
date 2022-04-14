@@ -6,15 +6,18 @@
 
     <div class="main_section">
       <div id="flex_container">
-        <p>List Length : {{ list_length }}</p>
-        <div @click="send(element, element.email)" v-for="element in teacher_list" :key="element" class="flex_stuff">
-          <p>Id: {{ element.id }}</p>
-          <p>Email: {{ element.email }}</p>
-          <p>Username: {{ element.username }}</p>
-          <p>Name: {{ element.name }}</p>
-          <p @click="send(element.section)">Section: {{ element.section }}</p>
-          <p>Age: {{ element.age }}</p>
-          <p>Arrival Date: {{ element.arrivaldate }}</p>
+        <div class="flex_container">
+          <div class="flex_stuff">
+            <p>Id: {{ item.id }}</p>
+            <p>Email: {{ item.email }}</p>
+            <p>Username: {{ item.username }}</p>
+            <p>Name: {{ item.name }}</p>
+            <p @click="send('section', item.section)">
+              Section: {{ item.section }}
+            </p>
+            <p>Age: {{ item.age }}</p>
+            <p>Arrival Date: {{ item.arrivaldate }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -30,39 +33,38 @@ const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
 
-const list_length = ref(0);
-const teacher_list = ref([]);
+const item = ref([]);
 
 onMounted(() => {
   console.log("On Mounted");
-  DisplayTeachers();
+  DisplayTeacher();
 });
-
 
 function send(direction, stuff) {
   console.log("send");
-  console.log(stuff);
-  direction = direction["@type"];
-  // direction.replace("")
-  console.log(direction)
-  // router.push({ name: direction, params: { id: stuff } });
+  console.log(direction);
+  console.log(stuff)
+  router.push({ name: direction, params: { id: stuff } });
+
 }
 
-function DisplayTeachers() {
-  console.log("Display Teachers");
-  teacher_list.value = storeStore.all_professors;
-  list_length.value = storeStore.all_professors.length;
-  teacher_list.value.forEach((current_teach) => {
-    if (isNaN(current_teach.section)) {
-      let section_list = storeStore.all_sections;
-      let failure = false;
-      section_list.forEach((element) => {
-        if (element["@id"] == current_teach.section) {
-          current_teach.section = element.name;
-        }
-      });
+function DisplayTeacher() {
+  console.log("Display Teacher");
+  console.log(route.params);
+  console.log(route.params.id);
+
+  let all_professors = storeStore.all_professors;
+
+  for (let index = 0; index < all_professors.length; index++) {
+    if (all_professors[index].id == route.params.id) {
+      console.log("Success");
+      console.log(all_professors[index]);
+      item.value = all_professors[index];
+      console.log(item.value.id);
+      console.log(item.value);
+      return;
     }
-  });
+  }
 }
 </script>
 <style scoped>
