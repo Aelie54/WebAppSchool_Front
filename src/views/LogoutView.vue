@@ -1,7 +1,6 @@
 <template>
   <div>
     <br />
-    <Form @form-submit="Logout" />
   </div>
 </template>
 
