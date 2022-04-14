@@ -11,6 +11,7 @@
         <p>List Length : {{ list_length }}</p>
 
         <div
+          @click="send(element.id)"
           v-for="element in recombined_list"
           :key="element"
           class="flex_stuff"
@@ -28,23 +29,32 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
+const router = useRouter();
+const route = useRoute();
 
 const recombined_list = ref([]);
 const list_length = ref(0);
-const current_section = ref("All");
 
 onMounted(() => {
   console.log("On Mounted");
   DisplayStudents();
 });
 
-async function DisplayStudents() {
+function DisplayStudents() {
   console.log("Display Students");
   recombined_list.value = storeStore.all_students;
   list_length.value = recombined_list.value.length;
 }
+
+function send(stuff) {
+  console.log("send");
+  console.log(stuff);
+  router.push({ name: "student", params: { id: stuff } });
+}
+
 </script>
 <style scoped>
 .main_section {

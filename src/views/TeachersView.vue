@@ -7,7 +7,7 @@
     <div class="main_section">
       <div id="flex_container">
         <p>List Length : {{ list_length }}</p>
-        <div v-for="element in teacher_list" :key="element" class="flex_stuff">
+        <div @click="send(element.name, element.email)" v-for="element in teacher_list" :key="element" class="flex_stuff">
           <p>Id: {{ element.id }}</p>
           <p>Email: {{ element.email }}</p>
           <p>Username: {{ element.username }}</p>
@@ -38,10 +38,12 @@ onMounted(() => {
   DisplayTeachers();
 });
 
-function send(stuff) {
+
+function send(direction, stuff) {
   console.log("send");
-  console.log(stuff)
-  router.push({ name: 'section', params: { id: stuff }})
+  console.log(stuff);
+  console.log(direction)
+  // router.push({ name: "section", params: { id: stuff } });
 }
 
 function DisplayTeachers() {
@@ -49,20 +51,13 @@ function DisplayTeachers() {
   teacher_list.value = storeStore.all_professors;
   list_length.value = storeStore.all_professors.length;
   teacher_list.value.forEach((current_teach) => {
-    // console.log(current_teach);
     if (isNaN(current_teach.section)) {
-      // console.log("Replacing section");
       let section_list = storeStore.all_sections;
-      // console.log(current_teach.section);
       let failure = false;
       section_list.forEach((element) => {
-        // console.log(element);
         if (element["@id"] == current_teach.section) {
-          // console.log("Found section");
-          current_teach.section = element.Name;
-          return;
+          current_teach.section = element.name;
         }
-        return;
       });
     }
   });
