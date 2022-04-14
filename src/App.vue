@@ -10,11 +10,9 @@
 
     <div class="wrapper">
       <!-- <HelloWorld msg="You did it!" /> -->
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <!-- <RouterLink to="/login">Login</RouterLink> -->
         <RouterLink to="/my_grades">Mes notes (eleve)</RouterLink>
         <RouterLink to="/sections">Sections</RouterLink>
         <RouterLink to="/students">Students</RouterLink>
@@ -23,7 +21,13 @@
         <RouterLink to="/registerstudent">Register a student</RouterLink>
         <RouterLink to="/logout">logout</RouterLink>
       </nav>
+
+      <h4>Connecté en tant que : 
+         {{status}} 
+      </h4>
+
       <div>
+        <h1></h1>
         <div>
           <button @click="mykey.fill_students_store">
             Store Fill Students
@@ -57,8 +61,14 @@
 </template>
 
 <script setup lang="ts">
+
 import { RouterLink, RouterView } from "vue-router";
+import { useTokenStore } from "./stores/token";
 import * as mykey from "./function/PeopleFetch";
+
+const tokenStore = useTokenStore();
+const status = tokenStore.status;
+
 </script>
 
 <style>

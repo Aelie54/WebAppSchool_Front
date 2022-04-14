@@ -25,6 +25,7 @@ async function Logout() {
   tokenStore.token = "";
   tokenStore.refresh_token = "";
   tokenStore.roles = "";
+  tokenStore.status = "";
 
   router.push('/')
 

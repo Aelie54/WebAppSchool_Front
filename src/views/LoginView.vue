@@ -65,15 +65,16 @@ async function FormSubmit(user) {
     if (tokenStore.roles.includes("ROLE_ADMIN") == true) {
       console.log("gagné directeur!");
       router.push("director");
-    } else {
-      router.push("director");
-    }
+      tokenStore.status = "Directrice/teur"
+    };
     if (tokenStore.roles.includes("ROLE_PROF") == true) {
+      tokenStore.status = "Professeur"
       router.push("prof");
-    }
+    };
     if (tokenStore.roles.includes("ROLE_STUDENT") == true) {
+      tokenStore.status = "Elève"
       router.push("eleve");
-    }
+    };
   }
 }
 </script>
