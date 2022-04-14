@@ -68,18 +68,21 @@ async function FormSubmit(user) {
 
     if (tokenStore.roles.includes("ROLE_ADMIN") == true) {
       tokenStore.status = "Directrice/teur"
+      console.log(tokenStore.roles);
       router.push("director");
       console.log("directeuuuuuuuuuuuuuuuuur !!!!");
       return;
     };
     if (tokenStore.roles.includes("ROLE_PROF") == true) {
-      tokenStore.status = "Professeur"
+      tokenStore.status = "Professeur";
+      console.log(tokenStore.roles);
       router.push("prof");
       console.log("prooooooooooouooooof !!!!")
       return;
     };
     if (tokenStore.roles.includes("ROLE_STUDENT") == true) {
-      tokenStore.status = "Elève"
+      tokenStore.status = "Elève";
+            console.log(tokenStore.roles);
       router.push("eleve");
       console.log("Eleveuuuuuuuuuuuuuuuuuuuuuh !!!!")
       return;

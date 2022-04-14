@@ -23,7 +23,7 @@
       </nav>
 
       <h4 style="color::red">Connecté en tant que : 
-         {{status}} 
+         {{tokenStore.status}} 
       </h4>
 
       <div>
@@ -65,12 +65,8 @@
 import { RouterLink, RouterView } from "vue-router";
 import { useTokenStore } from "./stores/token";
 import * as mykey from "./function/PeopleFetch";
-import { ref, onMounted } from "vue";
 
 const tokenStore = useTokenStore();
-const teacher_list = ref([]);
-
-const status =ref{tokenStore.status};
 
 </script>
 
