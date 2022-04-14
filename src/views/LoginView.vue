@@ -62,18 +62,27 @@ async function FormSubmit(user) {
     console.log(tokenStore.roles);
 
     //https://www.digitalocean.com/community/tutorials/js-array-search-methods-fr
+
+    tokenStore.status = "";
+    console.log(tokenStore.status);
+
     if (tokenStore.roles.includes("ROLE_ADMIN") == true) {
-      console.log("gagné directeur!");
-      router.push("director");
       tokenStore.status = "Directrice/teur"
+      router.push("director");
+      console.log("directeuuuuuuuuuuuuuuuuur !!!!");
+      return;
     };
     if (tokenStore.roles.includes("ROLE_PROF") == true) {
       tokenStore.status = "Professeur"
       router.push("prof");
+      console.log("prooooooooooouooooof !!!!")
+      return;
     };
     if (tokenStore.roles.includes("ROLE_STUDENT") == true) {
       tokenStore.status = "Elève"
       router.push("eleve");
+      console.log("Eleveuuuuuuuuuuuuuuuuuuuuuh !!!!")
+      return;
     };
   }
 }

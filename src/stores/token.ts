@@ -12,8 +12,6 @@ export const useTokenStore = defineStore({
   getters: {
     getToken: (state) => state.token,
     getRefreshToken: (state) => state.refresh_token,
-    getRoles: (state) => state.roles,
-    getStatus: (state) => state.status,
   },
   actions: {
     setToken(tk: string) {

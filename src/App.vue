@@ -22,7 +22,7 @@
         <RouterLink to="/logout">logout</RouterLink>
       </nav>
 
-      <h4>Connecté en tant que : 
+      <h4 style="color::red">Connecté en tant que : 
          {{status}} 
       </h4>
 
@@ -65,9 +65,12 @@
 import { RouterLink, RouterView } from "vue-router";
 import { useTokenStore } from "./stores/token";
 import * as mykey from "./function/PeopleFetch";
+import { ref, onMounted } from "vue";
 
 const tokenStore = useTokenStore();
-const status = tokenStore.status;
+const teacher_list = ref([]);
+
+const status =ref{tokenStore.status};
 
 </script>
 
