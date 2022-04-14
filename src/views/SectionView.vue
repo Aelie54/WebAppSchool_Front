@@ -5,7 +5,7 @@
       <p>Section name : {{ item.name }}</p>
       <p>Section Professor : {{ item.instit }}</p>
       <p>Section id : {{ item.id }}</p>
-      <p>Section students : {{ item.Eleve }}</p>
+      <p>Section students : {{ item.eleve }}</p>
     </div>
   </div>
 </template>

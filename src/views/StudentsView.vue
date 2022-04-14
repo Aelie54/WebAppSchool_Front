@@ -54,7 +54,6 @@ function send(stuff) {
   console.log(stuff);
   router.push({ name: "student", params: { id: stuff } });
 }
-
 </script>
 <style scoped>
 .main_section {

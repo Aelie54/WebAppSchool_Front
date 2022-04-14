@@ -12,7 +12,9 @@
             <p>Email: {{ item.email }}</p>
             <p>Username: {{ item.username }}</p>
             <p>Name: {{ item.name }}</p>
-            <p @click="send(item.section)">Section: {{ item.section }}</p>
+            <p @click="send('section', item.section)">
+              Section: {{ item.section }}
+            </p>
             <p>Age: {{ item.age }}</p>
             <p>Arrival Date: {{ item.arrivaldate }}</p>
           </div>
@@ -40,7 +42,10 @@ onMounted(() => {
 
 function send(direction, stuff) {
   console.log("send");
-  console.log(stuff);
+  console.log(direction);
+  console.log(stuff)
+  router.push({ name: direction, params: { id: stuff } });
+
 }
 
 function DisplayTeacher() {
