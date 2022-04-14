@@ -10,6 +10,7 @@
 import Form from "../components/Form.vue";
 import jwt_decode from "jwt-decode";
 import { useTokenStore } from "../stores/token";
+import {useRouter, useRoute} from "vue-router";
 
 async function FormSubmit(user) {
   let datas = {
@@ -35,26 +36,32 @@ const tokenStore = useTokenStore();
     });
 
   if (response.token && response.refresh_token) {
-    console.log(response);
+
+    // console.log("mon premier console", response);
     sessionStorage.clear();
     localStorage.clear();
 
     tokenStore.token = response.token;
     tokenStore.refresh_token = response.refresh_token;
-    // tokenStore.roles = decoded.roles;
+
+    console.log("mon token:", response.token);
+    console.log("mon refresh token:", response.refresh_token);
+
+    // sessionStorage.setItem("token", "response.token");
+    // sessionStorage.setItem("refresh_token", "response.refresh_token");
+    // console.log("j'essaie d'afficher le decode token et maintenant decoded");
+    let decoded = jwt_decode(tokenStore.token);
+    // console.log(decoded.roles);
+    // sessionStorage.setItem("roles", "decoded.roles");
+
+    tokenStore.roles = decoded.roles;
+    
+    console.log("mon store :");
+    console.log(tokenStore.refresh_token );
+    console.log(tokenStore.token);
+    console.log(tokenStore.roles);
 
 
-    sessionStorage.setItem("token", "response.token");
-    sessionStorage.setItem("refresh_token", "response.refresh_token");
-    // sessionStorage.setItem("refresh_token", "response.roles");
-
-    console.log("j'essaie d'afficher le decode token");
-
-var decoded = jwt_decode(tokenStore.token);
- 
-console.log(decoded);
-
-    // sessionStorage.setItem("roles", decode.roles);
 
   }
 }
