@@ -3,11 +3,8 @@
     <h1>Page liste all sections</h1>
     Ici, on pourra voir la liste des classes. Je crois que le directeur et les
     profs pourront voir cette page.
-    <p>
-      <button @click="display_sections()">Display Sections</button>
-    </p>
     <div class="flex_container">
-      <div v-for="item in section_list" :key="item" class="flex_stuff">
+      <div @click="send(item.name)" v-for="item in section_list" :key="item" class="flex_stuff">
         <!-- {{ item }} -->
         <p>Section name : {{ item.name }}</p>
         <p>Section Professor : {{ item.instit }}</p>
@@ -19,8 +16,12 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
+const router = useRouter();
+const route = useRoute();
+
 
 const section_list = ref([]);
 
@@ -39,6 +40,12 @@ function display_sections() {
     console.log(storeStore.all_sections);
     section_list.value = storeStore.all_sections;
   }
+}
+
+function send(stuff) {
+  console.log("send");
+  console.log(stuff);
+  router.push({ name: "section", params: { id: stuff } });
 }
 
 </script>
