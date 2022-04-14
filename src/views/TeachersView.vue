@@ -40,8 +40,8 @@ onMounted(() => {
 
 function send(stuff) {
   console.log("send");
-  console.log(stuff)
-  router.push({ name: 'section', params: { id: stuff }})
+  console.log(stuff);
+  router.push({ name: "section", params: { id: stuff } });
 }
 
 function DisplayTeachers() {
@@ -49,20 +49,13 @@ function DisplayTeachers() {
   teacher_list.value = storeStore.all_professors;
   list_length.value = storeStore.all_professors.length;
   teacher_list.value.forEach((current_teach) => {
-    // console.log(current_teach);
     if (isNaN(current_teach.section)) {
-      // console.log("Replacing section");
       let section_list = storeStore.all_sections;
-      // console.log(current_teach.section);
       let failure = false;
       section_list.forEach((element) => {
-        // console.log(element);
         if (element["@id"] == current_teach.section) {
-          // console.log("Found section");
-          current_teach.section = element.Name;
-          return;
+          current_teach.section = element.name;
         }
-        return;
       });
     }
   });

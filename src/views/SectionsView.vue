@@ -9,7 +9,7 @@
     <div class="flex_container">
       <div v-for="item in section_list" :key="item" class="flex_stuff">
         <!-- {{ item }} -->
-        <p>Section name : {{ item.Name }}</p>
+        <p>Section name : {{ item.name }}</p>
         <p>Section Professor : {{ item.Instit }}</p>
         <p>Section id : {{ item.id }}</p>
       </div>
