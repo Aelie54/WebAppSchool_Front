@@ -3,34 +3,17 @@
     <h1>Page liste students</h1>
 
     <div class="main_section">
-      <p>
-        Name :
-        {{ item.name }}
-      </p>
-      <p>
-        First name :
-        {{ item.firstname }}
-      </p>
-      <p>
-        Username :
-        {{ item.username }}
-      </p>
-      <p>
-        Email :
-        {{ item.email }}
-      </p>
-      <p>
-        Parent 1 Email :
-        {{ item.parent1 }}
-      </p>
-      <p>
-        Parent 2 Email :
-        {{ item.parent2 }}
-      </p>
-      <p>
-        Section :
-        {{ item.section }}
-      </p>
+      <div class="flex_container">
+        <div class="flex_stuff">
+          <p>Name : {{ item.name }}</p>
+          <p>First name : {{ item.firstname }}</p>
+          <p>Username :{{ item.username }}</p>
+          <p>Email :{{ item.email }}</p>
+          <p>Parent 1 Email :{{ item.parent1 }}</p>
+          <p>Parent 2 Email :{{ item.parent2 }}</p>
+          <p @click="send(item.section)">Section : {{ item.section }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,13 +26,20 @@ const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
 
-const section_list = ref([]);
 const item = ref([]);
 
 onMounted(() => {
   console.log("O Mounted");
   DisplayStudent();
 });
+
+function send(stuff) {
+  console.log("send");
+  console.log(stuff);
+  stuff = stuff.replace("/api/sections/", "");
+  stuff = parseInt(stuff);
+  router.push({ name: "section", params: { id: stuff } });
+}
 
 function DisplayStudent() {
   console.log("Display Student");
