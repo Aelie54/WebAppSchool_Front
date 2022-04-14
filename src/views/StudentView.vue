@@ -12,6 +12,10 @@
           <p>Parent 1 Email :{{ item.parent1 }}</p>
           <p>Parent 2 Email :{{ item.parent2 }}</p>
           <p @click="send(item.section)">Section : {{ item.section }}</p>
+          <div class="button_section">
+            <div @click="edit_student(item)" class="buttons">Edit</div>
+            <div @click="delete_student(item)" class="buttons">Remove</div>
+          </div>
         </div>
       </div>
     </div>
@@ -39,6 +43,16 @@ function send(stuff) {
   stuff = stuff.replace("/api/sections/", "");
   stuff = parseInt(stuff);
   router.push({ name: "section", params: { id: stuff } });
+}
+
+function edit_student(stuff) {
+  console.log("edit");
+  // router.push({ name: "edit_student", params: { id: item.id } });
+}
+
+function delete_student(stuff) {
+  console.log("delete");
+
 }
 
 function DisplayStudent() {
@@ -82,5 +96,16 @@ function DisplayStudent() {
   padding: 2vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 1vh;
+}
+
+.button_section {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 20%;
+  padding-right: 20%;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1vh;
+  background-color: aqua;
 }
 </style>
