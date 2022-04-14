@@ -12,6 +12,8 @@ import jwt_decode from "jwt-decode";
 import { useTokenStore } from "../stores/token";
 import {useRouter, useRoute} from "vue-router";
 
+const router = useRouter();
+
 async function FormSubmit(user) {
   let datas = {
     username: user.username,
@@ -36,22 +38,20 @@ const tokenStore = useTokenStore();
     });
 
   if (response.token && response.refresh_token) {
-
-    // console.log("mon premier console", response);
     sessionStorage.clear();
     localStorage.clear();
 
     tokenStore.token = response.token;
     tokenStore.refresh_token = response.refresh_token;
 
-    console.log("mon token:", response.token);
-    console.log("mon refresh token:", response.refresh_token);
+    let decoded = jwt_decode(tokenStore.token);
 
+    // console.log("mon token:", response.token);
+    // console.log("mon refresh token:", response.refresh_token);
     // sessionStorage.setItem("token", "response.token");
     // sessionStorage.setItem("refresh_token", "response.refresh_token");
     // console.log("j'essaie d'afficher le decode token et maintenant decoded");
-    let decoded = jwt_decode(tokenStore.token);
-    // console.log(decoded.roles);
+    // console.log("mon decoded : ",decoded);
     // sessionStorage.setItem("roles", "decoded.roles");
 
     tokenStore.roles = decoded.roles;
@@ -61,7 +61,21 @@ const tokenStore = useTokenStore();
     console.log(tokenStore.token);
     console.log(tokenStore.roles);
 
+    //https://www.digitalocean.com/community/tutorials/js-array-search-methods-fr
+    if ((tokenStore.roles).includes("ROLE_ADMIN") == true )
+    {
+      console.log("gagné directeur!");
+      router.push('director');
+    }else {
+      router.push('director')
+    };
 
+        if ((tokenStore.roles).includes("ROLE_PROF") == true )
+    {
+      console.log("gagné m. le prof!");
+    }else {
+      router.push('director')
+    };
 
   }
 }
