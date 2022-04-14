@@ -1,7 +1,5 @@
-<template>
-  <h1>Inscrire un professeur</h1>
-  Ici, le directeur peut inscrire un nouveau professeur et créer
-  sesidentifiants.<br />
+<template><br>
+  <h1>Inscrire un élève</h1>
 
   <form @submit.prevent="$emit('form-submit', student)">
     <input

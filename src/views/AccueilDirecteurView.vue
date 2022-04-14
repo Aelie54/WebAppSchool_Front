@@ -1,3 +1,3 @@
 <template>
-  <h1>Bonjour Monsieur le directrice/teur</h1>
+  <h1>Bonjour Madame/Monsieur la/le directrice/teur</h1>
 </template>
