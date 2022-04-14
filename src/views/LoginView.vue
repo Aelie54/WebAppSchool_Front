@@ -69,12 +69,13 @@ const tokenStore = useTokenStore();
     }else {
       router.push('director')
     };
-
-        if ((tokenStore.roles).includes("ROLE_PROF") == true )
+    if ((tokenStore.roles).includes("ROLE_PROF") == true )
     {
-      console.log("gagné m. le prof!");
-    }else {
-      router.push('director')
+      router.push('prof')
+    };
+    if ((tokenStore.roles).includes("ROLE_STUDENT") == true )
+    {
+      router.push('eleve')
     };
 
   }
