@@ -17,7 +17,6 @@ const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
 
-const section_list = ref([]);
 const item = ref([]);
 
 onMounted(() => {
