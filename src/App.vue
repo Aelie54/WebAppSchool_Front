@@ -21,6 +21,7 @@
         <RouterLink to="/professors">Professors</RouterLink>
         <RouterLink to="/RegisterProf">Register a professor</RouterLink>
         <RouterLink to="/registerstudent">Register a student</RouterLink>
+        <RouterLink to="/logout">logout</RouterLink>
       </nav>
       <div>
         <div>

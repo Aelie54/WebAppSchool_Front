@@ -81,6 +81,15 @@ const router = createRouter({
       name: "eleve",
       component: () => import("../views/AccueilEleveView.vue"),
     },
+
+    {
+      path: "/logout",
+      name: "logout",
+      component: () => import("../views/LogoutView.vue"),
+    },
+
+
+
   ],
 });
 
