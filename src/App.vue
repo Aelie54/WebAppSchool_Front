@@ -40,6 +40,12 @@
           <button @click="mykey.fill_professor_store">
             Store Fill Professor
           </button>
+                    <button @click="mykey.fill_grades_store">
+            Store Fill Grades
+          </button>
+                    <button @click="mykey.fill_matter_store">
+            Store Fill Matter
+          </button>
         </div>
         <div>
           <button @click="mykey.empty_students_store">
