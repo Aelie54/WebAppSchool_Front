@@ -1,10 +1,38 @@
 <template>
   <div>
     <h1>Page liste my fake_grades</h1>
-    Ici, un éléve pourra voir ses notes
-    <p>Moyenne générale :</p>
+    Here, a student can see their grades
+    <h3>
+      <p>Grade point average:</p>
+    </h3>
+
     <p>
-      {{ current_student }}
+      Name :
+      {{ current_student.name }}
+    </p>
+    <p>
+      Firstname :
+      {{ current_student.firstname }}
+    </p>
+    <p>
+      Email :
+      {{ current_student.email }}
+    </p>
+    <p>
+      Username :
+      {{ current_student.username }}
+    </p>
+    <p>
+      Section :
+      {{ current_student.section }}
+    </p>
+    <p>
+      Parent 1 Email :
+      {{ current_student.parent1 }}
+    </p>
+    <p>
+      Parent 2 Email :
+      {{ current_student.parent2 }}
     </p>
   </div>
 </template>
@@ -30,20 +58,16 @@ function student_grade() {
   console.log(route.params.id);
 
   let all_students = storeStore.all_students;
-  let found = false
-  all_students.forEach((element) => {
-    console.log("Loop");
-    if (found) {
-      return;
-    }
-    if (element.id == route.params.id) {
+
+  for (let index = 0; index < all_students.length; index++) {
+    console.log("lapin");
+    if (all_students[index].id == route.params.id) {
       console.log("Success");
-      console.log(element);
-      current_student.value = element;
+      console.log(all_students[index]);
+      current_student.value = all_students[index];
       console.log(current_student.value);
-      found = true;
     }
-  });
+  }
 }
 </script>
 
