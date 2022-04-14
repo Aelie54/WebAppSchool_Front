@@ -40,7 +40,7 @@ function send(direction, stuff) {
   // stuff = stuff.replace("/api/students/", "");
   stuff = stuff.split("/");
   console.log(stuff);
-  // router.push({ name: direction, params: { id: stuff } });
+  router.push({ name: direction, params: { id: stuff[3] } });
 }
 
 function display_sections() {
