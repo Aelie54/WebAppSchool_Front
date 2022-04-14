@@ -3,7 +3,6 @@
     <h1>Page liste students</h1>
     Ici, le directeur et peut-être les profs pourront voir les éléves.
     <br />
-    <button @click="DisplayStudents">Display Students</button><br />
 
     <div class="main_section">
       <div id="flex_container">
