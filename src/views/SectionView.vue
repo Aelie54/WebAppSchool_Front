@@ -6,7 +6,7 @@
     </p>
     <div class="flex_container">
       <p>Section name : {{ item.name }}</p>
-      <p>Section Professor : {{ item.Instit }}</p>
+      <p>Section Professor : {{ item.instit }}</p>
       <p>Section id : {{ item.id }}</p>
       <p>Section students : {{ item.Eleve }}</p>
 

@@ -1,15 +1,36 @@
 <template>
   <div>
     <h1>Page liste students</h1>
-    Ici, le directeur et peut-être les profs pourront voir les éléves.
-    <br />
 
     <div class="main_section">
-      <div id="flex_container" v-for="value in item" :key="value">
-        <p class="flex_stuff">
-          {{ value }}
-        </p>
-      </div>
+      <p>
+        Name :
+        {{ item.name }}
+      </p>
+      <p>
+        First name :
+        {{ item.firstname }}
+      </p>
+      <p>
+        Username :
+        {{ item.username }}
+      </p>
+      <p>
+        Email :
+        {{ item.email }}
+      </p>
+      <p>
+        Parent 1 Email :
+        {{ item.parent1 }}
+      </p>
+      <p>
+        Parent 2 Email :
+        {{ item.parent2 }}
+      </p>
+      <p>
+        Section :
+        {{ item.section }}
+      </p>
     </div>
   </div>
 </template>
