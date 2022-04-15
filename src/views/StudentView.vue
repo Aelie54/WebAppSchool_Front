@@ -50,7 +50,8 @@ function send(stuff) {
 
 function edit_student(stuff) {
   console.log("edit");
-  router.push({ name: "student_modify", params: { id: stuff } });
+  console.log(stuff);
+  router.push({ name: "student_modify", params: { id: stuff.id} });
 }
 
 function delete_student(stuff) {

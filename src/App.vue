@@ -22,10 +22,12 @@
         <RouterLink to="/logout">logout</RouterLink>
       </nav>
 
+      <br />
       <h4 style="color::red">
         Connecté en tant que :
         {{ tokenStore.status }}
       </h4>
+      <br />
 
       <div>
         <h1></h1>
@@ -44,6 +46,9 @@
           <button @click="mykey.fill_grades_store">Store Fill Grades</button>
           <button @click="mykey.fill_matter_store">Store Fill Matter</button>
         </div>
+        <br>
+        <hr>
+        <br>
         <div>
           <button @click="mykey.empty_students_store">
             Store Empty Students
@@ -54,6 +59,12 @@
           </button>
           <button @click="mykey.empty_professor_store">
             Store Empty Professor
+          </button>
+                    <button @click="mykey.empty_grades_store">
+            Store Empty Grades
+          </button>
+                    <button @click="mykey.empty_matter_store">
+            Store Empty Matter
           </button>
         </div>
       </div>
