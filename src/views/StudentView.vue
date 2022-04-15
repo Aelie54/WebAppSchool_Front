@@ -61,8 +61,11 @@ function edit_student(stuff) {
 function delete_student(stuff) {
   console.log("delete");
   console.log(stuff);
-  // mykey.delete_entity(stuff["@type"], stuff.id);
-  mykey.delete_entity('students', stuff.id);
+  let direction = stuff["@id"]
+  direction = direction.split("/");
+  direction = direction[2];
+  console.log(direction);
+  mykey.delete_entity(direction, stuff.id);
 }
 
 function DisplayStudent() {
