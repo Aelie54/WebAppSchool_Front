@@ -23,7 +23,7 @@ export async function delete_entity(place, entity_id) {
                     // Authorization: `Bearer ${storeToken.token}`,
             }
         })
-        .then((r) => r.json())
+        .then()
         .catch();
     // console.log(response);
     // console.log(response);
