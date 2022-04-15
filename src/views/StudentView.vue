@@ -11,6 +11,8 @@
           <p>Email :{{ item.email }}</p>
           <p>Parent 1 Email :{{ item.parent1 }}</p>
           <p>Parent 2 Email :{{ item.parent2 }}</p>
+          <p>Grades :{{ item.grades }}</p>
+
           <p @click="send(item.section)">Section : {{ item.section }}</p>
           <div class="button_section">
             <div @click="edit_student(item)" class="buttons">Edit</div>
