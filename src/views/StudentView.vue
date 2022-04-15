@@ -5,6 +5,8 @@
     <div class="main_section">
       <div class="flex_container">
         <div class="flex_stuff">
+          <p>Id : {{ item.id }}</p>
+
           <p>Name : {{ item.name }}</p>
           <p>First name : {{ item.firstname }}</p>
           <p>Username :{{ item.username }}</p>
@@ -12,7 +14,7 @@
           <p>Parent 1 Email :{{ item.parent1 }}</p>
           <p>Parent 2 Email :{{ item.parent2 }}</p>
           <p>Grades :{{ item.grades }}</p>
-          <p @click="send(item.section)">Section : {{ item.section }}</p>
+          <!-- <p @click="send(item.section)">Section : {{ item.section.name }}</p> -->
 
           <div class="button_section">
             <div @click="edit_student(item)" class="buttons">Edit</div>

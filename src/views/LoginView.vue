@@ -28,7 +28,7 @@ async function FormSubmit(user) {
     method: "POST",
     body: JSON.stringify(datas),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/ld+json",
     },
   })
     .then((r) => r.json())
