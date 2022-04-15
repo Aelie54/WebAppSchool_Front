@@ -12,8 +12,8 @@
           <p>Parent 1 Email :{{ item.parent1 }}</p>
           <p>Parent 2 Email :{{ item.parent2 }}</p>
           <p>Grades :{{ item.grades }}</p>
-
           <p @click="send(item.section)">Section : {{ item.section }}</p>
+
           <div class="button_section">
             <div @click="edit_student(item)" class="buttons">Edit</div>
             <div @click="delete_student(item)" class="buttons">Remove</div>
@@ -42,14 +42,15 @@ onMounted(() => {
 function send(stuff) {
   console.log("send");
   console.log(stuff);
-  stuff = stuff.replace("/api/sections/", "");
+  stuff = stuff["@id"].replace("/api/sections/", "");
   stuff = parseInt(stuff);
+  console.log(stuff);
   router.push({ name: "section", params: { id: stuff } });
 }
 
 function edit_student(stuff) {
   console.log("edit");
-  // router.push({ name: "edit_student", params: { id: item.id } });
+  router.push({ name: "student_modify", params: { id: stuff } });
 }
 
 function delete_student(stuff) {
