@@ -71,10 +71,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
+import * as mykey from "../function/EntityModif";
+
 const storeStore = useStudentsStore();
-const router = useRouter();
 const route = useRoute();
 
 const student = ref([]);

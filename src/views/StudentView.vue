@@ -28,6 +28,8 @@
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
+import * as mykey from "../function/EntityModif";
+
 const storeStore = useStudentsStore();
 const router = useRouter();
 const route = useRoute();
@@ -51,12 +53,14 @@ function send(stuff) {
 function edit_student(stuff) {
   console.log("edit");
   console.log(stuff);
-  router.push({ name: "student_modify", params: { id: stuff.id} });
+  router.push({ name: "student_modify", params: { id: stuff.id } });
 }
 
 function delete_student(stuff) {
   console.log("delete");
   console.log(stuff);
+  // mykey.delete_entity(stuff["@type"], stuff.id);
+  mykey.delete_entity('students', stuff.id);
 }
 
 function DisplayStudent() {
