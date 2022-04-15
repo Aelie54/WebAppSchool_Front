@@ -6,7 +6,7 @@ export const useTokenStore = defineStore({
     token: "",
     refresh_token: "",
     roles: [],
-    status: ""
+    status: "",
   }),
   persist: true,
   getters: {

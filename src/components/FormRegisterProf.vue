@@ -1,4 +1,5 @@
-<template><br>
+<template>
+  <br />
   <h1>Inscrire un professeur</h1>
 
   <form @submit.prevent="$emit('form-submit', prof)">

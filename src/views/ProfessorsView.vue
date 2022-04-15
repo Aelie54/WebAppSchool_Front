@@ -29,11 +29,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStudentsStore } from "../stores/students";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 const storeStore = useStudentsStore();
 const router = useRouter();
-const route = useRoute();
 
 const list_length = ref(0);
 const teacher_list = ref([]);
@@ -59,7 +58,6 @@ function DisplayTeachers() {
   teacher_list.value.forEach((current_teach) => {
     if (isNaN(current_teach.section)) {
       let section_list = storeStore.all_sections;
-      let failure = false;
       section_list.forEach((element) => {
         if (element["@id"] == current_teach.section) {
           current_teach.section = element.name;

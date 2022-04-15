@@ -22,8 +22,9 @@
         <RouterLink to="/logout">logout</RouterLink>
       </nav>
 
-      <h4 style="color::red">Connecté en tant que : 
-         {{tokenStore.status}} 
+      <h4 style="color::red">
+        Connecté en tant que :
+        {{ tokenStore.status }}
       </h4>
 
       <div>
@@ -40,12 +41,8 @@
           <button @click="mykey.fill_professor_store">
             Store Fill Professor
           </button>
-                    <button @click="mykey.fill_grades_store">
-            Store Fill Grades
-          </button>
-                    <button @click="mykey.fill_matter_store">
-            Store Fill Matter
-          </button>
+          <button @click="mykey.fill_grades_store">Store Fill Grades</button>
+          <button @click="mykey.fill_matter_store">Store Fill Matter</button>
         </div>
         <div>
           <button @click="mykey.empty_students_store">
@@ -67,13 +64,11 @@
 </template>
 
 <script setup lang="ts">
-
 import { RouterLink, RouterView } from "vue-router";
 import { useTokenStore } from "./stores/token";
 import * as mykey from "./function/PeopleFetch";
 
 const tokenStore = useTokenStore();
-
 </script>
 
 <style>

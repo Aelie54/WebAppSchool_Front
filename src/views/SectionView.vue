@@ -64,18 +64,19 @@ function display_sections() {
   }
   if (found == false) {
     console.log("Not found, searching by name");
-    for (let index = 0; index < all_sections.length; index++) { 
-    if (all_sections[index].name == route.params.id) {
-      console.log("Success");
-      console.log(all_sections[index]);
-      item.value = all_sections[index];
-      console.log(item.value.name);
-      console.log(item.value);
-      found = true;
-      return;
+    for (let index = 0; index < all_sections.length; index++) {
+      if (all_sections[index].name == route.params.id) {
+        console.log("Success");
+        console.log(all_sections[index]);
+        item.value = all_sections[index];
+        console.log(item.value.name);
+        console.log(item.value);
+        found = true;
+        return;
+      }
     }
   }
-}}
+}
 </script>
 <style>
 .main_section {

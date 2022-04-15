@@ -47,11 +47,11 @@ async function add_professor(prof) {
     .catch();
   console.log(response);
 
-  // if (error_code === 201) {
-  //   console.log("Successfully sent");
-  // } else {
-  //   console.log("Error in sending.");
-  // }
+  if (error_code === 201) {
+    console.log("Successfully sent");
+  } else {
+    console.log("Error in sending.");
+  }
 
   // .then((r) => r.json())
   //

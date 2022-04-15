@@ -6,17 +6,17 @@
 import FormRegister from "../components/FormRegisterStudent.vue";
 
 async function add(student) {
-  let datas = {
-    email: student.email,
-    gender: true,
-    password: student.password,
-    username: student.username,
-    name: student.name,
-    roles: ["ROLE_STUDENT"],
-    firstname: student.firstname,
-    parent1: student.parent1,
-    parent2: student.parent2,
-  };
+  // let datas = {
+  //   email: student.email,
+  //   gender: true,
+  //   password: student.password,
+  //   username: student.username,
+  //   name: student.name,
+  //   roles: ["ROLE_STUDENT"],
+  //   firstname: student.firstname,
+  //   parent1: student.parent1,
+  //   parent2: student.parent2,
+  // };
 
   console.log("add lancée!");
   console.log(student.value);

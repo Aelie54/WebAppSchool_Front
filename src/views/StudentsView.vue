@@ -28,11 +28,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 const router = useRouter();
-const route = useRoute();
 
 const recombined_list = ref([]);
 const list_length = ref(0);

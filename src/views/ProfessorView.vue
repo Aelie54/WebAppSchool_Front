@@ -43,9 +43,8 @@ onMounted(() => {
 function send(direction, stuff) {
   console.log("send");
   console.log(direction);
-  console.log(stuff)
+  console.log(stuff);
   router.push({ name: direction, params: { id: stuff } });
-
 }
 
 function DisplayTeacher() {

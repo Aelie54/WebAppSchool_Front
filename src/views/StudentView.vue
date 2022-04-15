@@ -55,7 +55,7 @@ function edit_student(stuff) {
 
 function delete_student(stuff) {
   console.log("delete");
-
+  console.log(stuff);
 }
 
 function DisplayStudent() {

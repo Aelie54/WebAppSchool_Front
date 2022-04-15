@@ -4,19 +4,15 @@
   </div>
 </template>
 
-
 <script setup>
-
 import { useTokenStore } from "../stores/token";
-import {useRouter, useRoute} from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 Logout();
 
-
 async function Logout() {
-
   const tokenStore = useTokenStore();
   sessionStorage.clear();
   localStorage.clear();
@@ -26,8 +22,6 @@ async function Logout() {
   tokenStore.roles = "";
   tokenStore.status = "";
 
-  router.push('/')
-
+  router.push("/");
 }
-
 </script>

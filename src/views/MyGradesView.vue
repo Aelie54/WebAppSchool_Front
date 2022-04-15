@@ -45,10 +45,9 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
-const router = useRouter();
 const route = useRoute();
 
 const current_student = ref([]);

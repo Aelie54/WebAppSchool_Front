@@ -21,11 +21,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { useStudentsStore } from "../stores/students";
 const storeStore = useStudentsStore();
 const router = useRouter();
-const route = useRoute();
 
 const section_list = ref([]);
 

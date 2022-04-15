@@ -12,6 +12,5 @@ export const useStudentsStore = defineStore({
   }),
   persist: true,
   getters: {},
-  actions: {
-  },
+  actions: {},
 });

@@ -10,7 +10,7 @@
 import Form from "../components/Form.vue";
 import jwt_decode from "jwt-decode";
 import { useTokenStore } from "../stores/token";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
@@ -67,26 +67,26 @@ async function FormSubmit(user) {
     console.log(tokenStore.status);
 
     if (tokenStore.roles.includes("ROLE_ADMIN") == true) {
-      tokenStore.status = "Directrice/teur"
+      tokenStore.status = "Directrice/teur";
       console.log(tokenStore.roles);
       router.push("director");
       console.log("directeuuuuuuuuuuuuuuuuur !!!!");
       return;
-    };
+    }
     if (tokenStore.roles.includes("ROLE_PROF") == true) {
       tokenStore.status = "Professeur";
       console.log(tokenStore.roles);
       router.push("prof");
-      console.log("prooooooooooouooooof !!!!")
+      console.log("prooooooooooouooooof !!!!");
       return;
-    };
+    }
     if (tokenStore.roles.includes("ROLE_STUDENT") == true) {
       tokenStore.status = "Elève";
-            console.log(tokenStore.roles);
+      console.log(tokenStore.roles);
       router.push("eleve");
-      console.log("Eleveuuuuuuuuuuuuuuuuuuuuuh !!!!")
+      console.log("Eleveuuuuuuuuuuuuuuuuuuuuuh !!!!");
       return;
-    };
+    }
   }
 }
 </script>
