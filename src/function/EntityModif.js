@@ -1,6 +1,5 @@
 // ULTRA JANKY MAIS CA MARCHE ET LES GENS SONT DANS LE STORE.
 
-import { useStudentsStore } from "../stores/students";
 import { useTokenStore } from "../stores/token";
 
 import * as mykey from "./PeopleFetch";

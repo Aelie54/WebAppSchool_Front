@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+    php:
+        build:
+            context: ./config
+            dockerfile: php.Dockerfile
+        container_name: my-php
+        depends_on:
+          - database
+        volumes:
+            - '.:/var/www/html:cached'
+
+    nginx:
+        image: 'nginx:1.21.6'
+        container_name: my-nginx
+        ports:
+            - '80:80'
+            - '444:443'
+        links:
+            - 'php'
+        volumes:
+            - '.:/var/www/html:cached'
+            - './config:/etc/nginx/conf.d:cached'
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+        - 8080:80
+        environment:
+        - PMA_ARBITRARY=1
+        links:
+          - "database"
+
+    # adminer:
+    #     image: adminer
+    #     container_name: my-adminer
+    #     restart: always
+    #     links:
+    #       - "database"
+    #     ports:
+    #     - 8080:8080
+
+    database:
+        image: 'mariadb:10.7.3'
+        container_name: my-database
+        restart: 'on-failure'
+        ports:
+            - "3306:3306"
+        environment:
+            MARIADB_DATABASE: api
+            MARIADB_ROOT_PASSWORD: root
+
+networks: 
+  default:
+    name: alaji

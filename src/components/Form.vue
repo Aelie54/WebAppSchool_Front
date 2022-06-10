@@ -1,7 +1,7 @@
 <template>
   <div>
     <center>
-      <img src="src/components/note_49598.jpg" alt="" width="400" />
+      <img src="./note_49598.jpg" alt="" width="400" />
     </center>
     <br />
     <form @submit.prevent="$emit('form-submit', user)">
